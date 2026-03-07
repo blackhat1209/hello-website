@@ -1,100 +1,20 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <title>Lessons - QuantumVerse</title>
-
-<style>
-
-body{
-font-family: Arial;
-text-align:center;
-background:#f4f4f4;
-margin:0;
-}
-
-header{
-background:#111;
-color:white;
-padding:20px;
-}
-
-nav{
-background:#333;
-padding:10px;
-}
-
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-.lesson{
-margin:20px;
-font-size:20px;
-}
-
-</style>
-
+<link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
 
-<header>
+<h1>Quantum Lessons</h1>
 
-<h1>QuantumVerse Lessons</h1>
-
-</header>
-
-<nav>
-
-<a href="index.html">Home</a>
-<a href="lessons.html">Lessons</a>
-<a href="experiments.html">Experiments</a>
-<a href="about.html">About</a>
-
-</nav>
-
-<h2>Available Lessons</h2>
-
-<div class="lesson">
-<a href="lesson1.html">Lesson 1: Wave–Particle Duality</a>
+<div class="lessonCard">
+<h3>Lesson 1: Introduction to Quantum Physics</h3>
+<a href="lesson1.html">
+<button>Start Lesson</button>
+</a>
 </div>
-
-<div class="lesson">
-Lesson 2: Photoelectric Effect (Coming Soon)
-</div>
-
-<div class="lesson">
-Lesson 3: De Broglie Wavelength (Coming Soon)
-</div>
-
-<h2>Your Progress</h2>
-
-
-<div style="width:300px;background:#ddd;margin:auto;height:25px;border-radius:5px;">
-<div id="bar" style="width:0%;height:25px;background:#4CAF50;border-radius:5px;"></div>
-</div>
-
-<p id="progress">Progress: 0%</p>
-
-<script>
-
-if(localStorage.getItem("lesson1") === "done"){
-
-document.getElementById("progress").innerHTML = "Progress: 33%";
-
-document.getElementById("bar").style.width = "33%";
-
-}
-
-</script>
-
-
 
 </body>
-
 </html>
