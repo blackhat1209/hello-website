@@ -3,6 +3,9 @@
 
 <head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>QuantumVerse</title>
 
 <style>
@@ -47,7 +50,7 @@ nav a:hover{
 color:#38bdf8;
 }
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
 text-align:center;
@@ -80,6 +83,18 @@ cursor:pointer;
 background:#1d4ed8;
 }
 
+/* LOGIN BUTTON */
+
+.login-btn{
+background:#ea4335;
+color:white;
+padding:12px 24px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:15px;
+}
+
 /* LESSON CARDS */
 
 .lesson-container{
@@ -97,10 +112,6 @@ padding:25px;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.08);
 text-align:center;
-}
-
-.lesson-card h3{
-margin-top:0;
 }
 
 .lesson-card a{
@@ -159,6 +170,12 @@ Simple lessons, visual explanations, and interactive quizzes.
 <button class="start-btn">Start Learning</button>
 </a>
 
+<br><br>
+
+<button class="login-btn" onclick="login()">Sign in with Google</button>
+
+<p id="user"></p>
+
 </section>
 
 <section>
@@ -206,10 +223,43 @@ Simple lessons, visual explanations, and interactive quizzes.
 <p>© 2026 QuantumVerse</p>
 
 </footer>
-<button onclick="login()">Sign in with Google</button>
-<p id="user"></p>
+
+<!-- Firebase Scripts -->
+
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+
+<script>
+
+const firebaseConfig = {
+
+apiKey: "YOUR_API_KEY",
+
+authDomain: "YOUR_DOMAIN",
+
+projectId: "YOUR_PROJECT_ID"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+function login(){
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+firebase.auth()
+.signInWithPopup(provider)
+.then((result)=>{
+
+document.getElementById("user").innerHTML =
+"Welcome " + result.user.displayName;
+
+});
+
+}
+
+</script>
 
 </body>
 
 </html>
-
