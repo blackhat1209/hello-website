@@ -74,6 +74,11 @@ Lesson 3: De Broglie Wavelength (Coming Soon)
 
 <h2>Your Progress</h2>
 
+
+<div style="width:300px;background:#ddd;margin:auto;height:25px;border-radius:5px;">
+<div id="bar" style="width:0%;height:25px;background:#4CAF50;border-radius:5px;"></div>
+</div>
+
 <p id="progress">Progress: 0%</p>
 
 <script>
@@ -82,9 +87,13 @@ if(localStorage.getItem("lesson1") === "done"){
 
 document.getElementById("progress").innerHTML = "Progress: 33%";
 
+document.getElementById("bar").style.width = "33%";
+
 }
 
 </script>
+
+
 
 </body>
 
