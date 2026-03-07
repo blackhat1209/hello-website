@@ -2,8 +2,10 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>QuantumVerse</title>
 
 <style>
@@ -40,23 +42,13 @@ text-align:center;
 padding:80px 20px;
 }
 
-.start-btn{
+button{
+padding:12px 20px;
 background:#2563eb;
 color:white;
-padding:14px 28px;
 border:none;
 border-radius:6px;
 cursor:pointer;
-}
-
-.login-btn{
-background:#ea4335;
-color:white;
-padding:12px 24px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:15px;
 }
 
 .lesson-container{
@@ -74,16 +66,6 @@ padding:25px;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.08);
 text-align:center;
-}
-
-.lesson-card a{
-text-decoration:none;
-color:white;
-background:#2563eb;
-padding:10px 18px;
-border-radius:6px;
-display:inline-block;
-margin-top:10px;
 }
 
 footer{
@@ -106,20 +88,26 @@ color:white;
 
 <nav>
 <a href="index.html">Home</a>
-<a href="lesson1.html">Lesson 1</a>
+<a href="lesson1.html">Lessons</a>
+<a href="#">Experiments</a>
+<a href="#">About</a>
 </nav>
 
 <section class="hero">
 
-<h2>Master Quantum Physics</h2>
+<h2>Start Learning Quantum Physics</h2>
 
-<p>Simple lessons and interactive learning.</p>
+<p>Enter your email to track progress</p>
 
-<br>
+<input id="email" placeholder="Enter email">
 
-<button class="login-btn" onclick="login()">Sign in with Google</button>
+<br><br>
+
+<button onclick="login()">Start Learning</button>
 
 <p id="user"></p>
+
+<p>Progress: <span id="progress">0%</span></p>
 
 </section>
 
@@ -130,9 +118,15 @@ color:white;
 <div class="lesson-container">
 
 <div class="lesson-card">
+
 <h3>Lesson 1</h3>
-<p>Wave–Particle Duality</p>
-<a href="lesson1.html">Start Lesson</a>
+
+<p>Wave-Particle Duality</p>
+
+<a href="lesson1.html">
+<button>Start Lesson</button>
+</a>
+
 </div>
 
 </div>
@@ -140,48 +134,11 @@ color:white;
 </section>
 
 <footer>
+
 <p>© QuantumVerse</p>
+
 </footer>
 
-
-<!-- Firebase login -->
-
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-
-<script>
-
-const firebaseConfig = {
-apiKey: "AIzaSyAcz5wsmlf6dQeBmZEZ8EGbULAQYTQ8rUo",
-authDomain: "quantumverse-32b5f.firebaseapp.com",
-projectId: "quantumverse-32b5f",
-};
-
-firebase.initializeApp(firebaseConfig);
-
-function login(){
-
-const provider = new firebase.auth.GoogleAuthProvider();
-
-firebase.auth()
-.signInWithPopup(provider)
-.then((result)=>{
-
-const user = result.user;
-
-document.getElementById("user").innerHTML =
-"Welcome " + user.displayName;
-
-localStorage.setItem("userEmail", user.email);
-
-});
-
-}
-
-</script>
-
-
-<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
@@ -189,8 +146,44 @@ localStorage.setItem("userEmail", user.email);
 
 const supabase = window.supabase.createClient(
 "https://rgiekcodgxjutfbdwqu.supabase.co",
-"PASTE_YOUR_FULL_PUBLISHABLE_KEY_HERE"
+"PASTE_YOUR_FULL_PUBLISHABLE_KEY"
 );
+
+function login(){
+
+let email = document.getElementById("email").value;
+
+if(!email){
+alert("Enter email");
+return;
+}
+
+localStorage.setItem("userEmail", email);
+
+document.getElementById("user").innerHTML =
+"Welcome " + email;
+
+loadProgress();
+
+}
+
+async function loadProgress(){
+
+let email = localStorage.getItem("userEmail");
+
+let { data } = await supabase
+.from("progress")
+.select("*")
+.eq("email", email)
+.single();
+
+if(data && data.lesson1){
+
+document.getElementById("progress").innerHTML="33%";
+
+}
+
+}
 
 </script>
 
