@@ -230,7 +230,7 @@ Simple lessons, visual explanations, and interactive quizzes.
 </footer>
 
 
-<!-- FIREBASE -->
+<!-- Firebase -->
 
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
@@ -257,8 +257,14 @@ firebase.auth()
 .signInWithPopup(provider)
 .then((result)=>{
 
+const user = result.user;
+
+// show name
 document.getElementById("user").innerHTML =
-"Welcome " + result.user.displayName;
+"Welcome " + user.displayName;
+
+// store UID for lesson progress
+localStorage.setItem("currentUserUID", user.uid);
 
 })
 .catch((error)=>{
