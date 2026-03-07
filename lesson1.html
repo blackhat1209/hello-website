@@ -1,128 +1,36 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<meta charset="UTF-8">
 <title>Lesson 1</title>
-
-<style>
-
-body{
-font-family:Arial;
-text-align:center;
-background:#f5f7fa;
-}
-
-.lesson{
-background:white;
-padding:40px;
-margin:40px auto;
-width:60%;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-button{
-padding:12px 20px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:10px;
-}
-
-.answer{
-display:none;
-margin-top:10px;
-}
-
-</style>
-
+<link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
 
-<h1>Lesson 1: Wave-Particle Duality</h1>
+<h1>Lesson 1: Introduction to Quantum Physics</h1>
 
-<div class="lesson">
-
-<h3>Theory</h3>
+<h2>Theory</h2>
 
 <p>
-
-Wave-particle duality states that light and matter can behave both as waves and as particles.
-
-Example: In the double slit experiment, light forms interference patterns like waves.
-
-But in the photoelectric effect, light behaves like particles called photons.
-
+Quantum physics studies how very small particles like electrons and photons behave.
+Unlike classical physics, particles can behave like both waves and particles.
 </p>
 
-<h3>Question</h3>
+<h2>Question</h2>
 
-<p>
-Why does the photoelectric effect prove that light behaves like particles?
+<p>What is wave-particle duality?</p>
+
+<button onclick="showAnswer()">Show Answer</button>
+
+<p id="answer" style="display:none;">
+Wave particle duality means particles like electrons and light behave both as waves and particles.
 </p>
 
-<button onclick="toggleAnswer()">Show / Hide Answer</button>
-
-<p id="answer" class="answer">
-
-Because electrons are emitted only when light with sufficient frequency strikes the metal, showing that energy is delivered in discrete packets called photons.
-
-</p>
-
-<br>
+<br><br>
 
 <button onclick="completeLesson()">Complete Lesson</button>
 
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const supabaseClient = window.supabase.createClient(
-"https://rgiekcodgxjutfbdwqu.supabase.co",
-"YOUR_PUBLISHABLE_KEY"
-);
-
-function toggleAnswer(){
-
-let ans = document.getElementById("answer");
-
-if(ans.style.display === "none"){
-ans.style.display = "block";
-}else{
-ans.style.display = "none";
-}
-
-}
-
-async function completeLesson(){
-
-let email = localStorage.getItem("userEmail");
-
-if(!email){
-alert("Please login on homepage first");
-return;
-}
-
-await supabaseClient
-.from("progress")
-.upsert({
-email: email,
-lesson1: true
-});
-
-alert("Lesson completed!");
-
-}
-
-</script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
