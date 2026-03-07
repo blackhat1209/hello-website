@@ -1,1 +1,49 @@
+body{
+font-family: Arial;
+margin:0;
+background:#0f172a;
+color:white;
+text-align:center;
+}
 
+header{
+background:#1e293b;
+padding:20px;
+}
+
+nav{
+background:#020617;
+padding:10px;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.hero{
+padding:60px;
+}
+
+.lessonCard{
+background:#1e293b;
+padding:20px;
+margin:30px;
+border-radius:10px;
+}
+
+button{
+padding:10px 20px;
+background:#38bdf8;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+footer{
+margin-top:40px;
+padding:20px;
+background:#020617;
+}
