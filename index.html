@@ -2,24 +2,46 @@
 <html>
 
 <head>
-<title>My Interactive Website</title>
+
+<title>QuantumVerse</title>
+
+<style>
+
+body{
+font-family: Arial;
+background-color: #f4f4f4;
+text-align: center;
+margin: 0;
+}
+
+header{
+background-color: #111;
+color: white;
+padding: 20px;
+}
+
+section{
+padding: 40px;
+}
+
+button{
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+}
+
+.lesson{
+margin: 20px;
+font-size: 18px;
+}
+
+</style>
 
 <script>
 
-function showMessage(){
-document.getElementById("message").innerHTML =
-"Welcome to my interactive website!";
-}
-
-let counter = 0;
-
-function increase(){
-counter++;
-document.getElementById("count").innerHTML = counter;
-}
-
-function changeColor(){
-document.body.style.background = "lightblue";
+function showWelcome(){
+document.getElementById("welcome").innerHTML =
+"Welcome to QuantumVerse — learn quantum physics step by step.";
 }
 
 </script>
@@ -28,16 +50,31 @@ document.body.style.background = "lightblue";
 
 <body>
 
-<h1>Hello World</h1>
+<header>
 
-<button onclick="showMessage()">Click Me</button>
-<p id="message"></p>
+<h1>QuantumVerse</h1>
 
-<h2>Button Click Counter</h2>
-<button onclick="increase()">Click</button>
-<p id="count">0</p>
+<p>Learn Quantum Physics Visually</p>
 
-<button onclick="changeColor()">Change Background Color</button>
+</header>
+
+<section>
+
+<h2>Start Learning</h2>
+
+<button onclick="showWelcome()">Click to Begin</button>
+
+<p id="welcome"></p>
+
+<h2>Lessons</h2>
+
+<div class="lesson">
+<a href="lesson1.html">
+Lesson 1: Wave–Particle Duality
+</a>
+</div>
+
+</section>
 
 </body>
 
