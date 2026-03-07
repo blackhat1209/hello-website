@@ -3,157 +3,100 @@
 
 <head>
 
-<title>Lesson 1 - Wave Particle Duality</title>
+<meta charset="UTF-8">
+<title>Lesson 1</title>
 
 <style>
 
 body{
-font-family: Arial;
-margin:0;
-background:#f4f4f4;
+font-family:Arial;
 text-align:center;
+background:#f5f7fa;
 }
 
-header{
-background:#111;
-color:white;
-padding:20px;
-}
-
-nav{
-background:#333;
-padding:10px;
-}
-
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
-font-size:18px;
-}
-
-nav a:hover{
-color:yellow;
-}
-
-section{
-padding:40px;
-}
-
-.quiz{
-border:1px solid #ccc;
-padding:20px;
-margin:20px auto;
-width:60%;
+.lesson{
 background:white;
+padding:40px;
+margin:40px auto;
+width:60%;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
 button{
-padding:10px 20px;
-font-size:16px;
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
 cursor:pointer;
-margin-top:10px;
 }
 
 </style>
-
-<script>
-
-function toggleAnswer(){
-
-let ans = document.getElementById("answer");
-
-if(ans.style.display === "none"){
-ans.style.display = "block";
-}else{
-ans.style.display = "none";
-}
-
-}
-
-function completeLesson(){
-
-localStorage.setItem("lesson1","done");
-
-alert("Lesson 1 Completed!");
-
-}
-
-</script>
 
 </head>
 
 <body>
 
-<header>
-
-<h1>QuantumVerse</h1>
-<p>Learn Quantum Physics Visually</p>
-
-</header>
-
-<nav>
-
-<a href="index.html">Home</a>
-<a href="lessons.html">Lessons</a>
-<a href="experiments.html">Experiments</a>
-<a href="about.html">About</a>
-
-</nav>
-
-<section>
-
 <h1>Lesson 1: Wave–Particle Duality</h1>
 
+<div class="lesson">
+
 <p>
+
 Wave–particle duality states that light and matter
 can behave both as waves and as particles.
-</p>
 
-<h2>Example</h2>
+</p>
 
 <p>
-Light produces interference patterns like waves in
-the double slit experiment but behaves like particles
-in the photoelectric effect.
+
+Example: In the double slit experiment,
+light creates interference patterns like waves.
+
 </p>
-
-<h2>Formula</h2>
-
-<h3>λ = h / p</h3>
-
-<p>
-h = Planck's constant  
-p = momentum
-</p>
-
-<div class="quiz">
-
-<h2>Quick Question</h2>
-
-<p>
-What does wave–particle duality mean?
-</p>
-
-<p id="answer" style="display:none;">
-Wave–particle duality means particles such as electrons
-and photons can behave both as waves and as particles.
-</p>
-
-<button onclick="toggleAnswer()">Show / Hide Answer</button>
-
-</div>
-
-<br>
 
 <button onclick="completeLesson()">Complete Lesson</button>
 
-<br><br>
+</div>
 
-<a href="lessons.html">← Back to Lessons</a>
 
-</section>
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+
+const supabase = window.supabase.createClient(
+"https://rgiekcodgxjutfbdwqu.supabase.co",
+"PASTE_YOUR_FULL_PUBLISHABLE_KEY_HERE"
+);
+
+async function completeLesson(){
+
+let email = localStorage.getItem("userEmail");
+
+if(!email){
+
+alert("Please login first");
+
+return;
+
+}
+
+await supabase
+.from("progress")
+.upsert({
+email: email,
+lesson1: true
+});
+
+alert("Lesson completed and saved!");
+
+}
+
+</script>
 
 </body>
-
 </html>
