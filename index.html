@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>My First Website</title>
+<title>My Interactive Website</title>
+
+<script>
+
+function showMessage(){
+document.getElementById("message").innerHTML =
+"Welcome to my interactive website!";
+}
+
+let counter = 0;
+
+function increase(){
+counter++;
+document.getElementById("count").innerHTML = counter;
+}
+
+function changeColor(){
+document.body.style.background = "lightblue";
+}
+
+</script>
+
 </head>
 
 <body>
 
 <h1>Hello World</h1>
-<p>This is my first website hosted using GitHub.</p>
+
+<button onclick="showMessage()">Click Me</button>
+<p id="message"></p>
+
+<h2>Button Click Counter</h2>
+<button onclick="increase()">Click</button>
+<p id="count">0</p>
+
+<button onclick="changeColor()">Change Background Color</button>
 
 </body>
+
 </html>
