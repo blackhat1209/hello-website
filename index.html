@@ -8,59 +8,122 @@
 <style>
 
 body{
-font-family: Arial;
 margin:0;
-background:#f4f4f4;
+font-family: 'Segoe UI', sans-serif;
+background:#f5f7fa;
+}
+
+/* HEADER */
+
+header{
+background:#0f172a;
+color:white;
+padding:25px;
 text-align:center;
 }
 
-header{
-background:#111;
-color:white;
-padding:20px;
+header h1{
+margin:0;
+font-size:32px;
 }
 
+/* NAVBAR */
+
 nav{
-background:#333;
-padding:10px;
+display:flex;
+justify-content:center;
+background:#1e293b;
+padding:12px;
 }
 
 nav a{
 color:white;
-margin:15px;
 text-decoration:none;
+margin:0 20px;
 font-size:18px;
 }
 
 nav a:hover{
-color:yellow;
+color:#38bdf8;
 }
 
-section{
-padding:40px;
+/* HERO SECTION */
+
+.hero{
+text-align:center;
+padding:80px 20px;
 }
 
-.lesson{
-margin:20px;
-font-size:20px;
+.hero h2{
+font-size:40px;
+color:#0f172a;
 }
 
-button{
-padding:10px 20px;
-font-size:16px;
+.hero p{
+font-size:18px;
+color:#555;
+}
+
+/* BUTTON */
+
+.start-btn{
+background:#2563eb;
+color:white;
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:6px;
 cursor:pointer;
 }
 
-</style>
-
-<script>
-
-function showWelcome(){
-document.getElementById("welcome").innerHTML =
-"Welcome to QuantumVerse — learn quantum physics step by step.";
+.start-btn:hover{
+background:#1d4ed8;
 }
 
-</script>
+/* LESSON CARDS */
+
+.lesson-container{
+display:flex;
+justify-content:center;
+gap:30px;
+padding:40px;
+flex-wrap:wrap;
+}
+
+.lesson-card{
+background:white;
+width:260px;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.lesson-card h3{
+margin-top:0;
+}
+
+.lesson-card a{
+text-decoration:none;
+color:white;
+background:#2563eb;
+padding:10px 18px;
+border-radius:6px;
+display:inline-block;
+margin-top:10px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+background:#0f172a;
+color:white;
+margin-top:40px;
+}
+
+</style>
 
 </head>
 
@@ -82,25 +145,67 @@ document.getElementById("welcome").innerHTML =
 
 </nav>
 
+<section class="hero">
+
+<h2>Master Quantum Physics</h2>
+
+<p>
+Simple lessons, visual explanations, and interactive quizzes.
+</p>
+
+<br>
+
+<a href="lessons.html">
+<button class="start-btn">Start Learning</button>
+</a>
+
+</section>
+
 <section>
 
-<h2>Start Learning Quantum Physics</h2>
+<h2 style="text-align:center;">Featured Lessons</h2>
 
-<button onclick="showWelcome()">Click to Begin</button>
+<div class="lesson-container">
 
-<p id="welcome"></p>
+<div class="lesson-card">
 
-<h2>Featured Lesson</h2>
+<h3>Lesson 1</h3>
 
-<div class="lesson">
+<p>Wave–Particle Duality</p>
 
-<a href="lesson1.html">
-Lesson 1: Wave–Particle Duality
-</a>
+<a href="lesson1.html">Start Lesson</a>
+
+</div>
+
+<div class="lesson-card">
+
+<h3>Lesson 2</h3>
+
+<p>Photoelectric Effect</p>
+
+<p>Coming Soon</p>
+
+</div>
+
+<div class="lesson-card">
+
+<h3>Lesson 3</h3>
+
+<p>De Broglie Wavelength</p>
+
+<p>Coming Soon</p>
+
+</div>
 
 </div>
 
 </section>
+
+<footer>
+
+<p>© 2026 QuantumVerse</p>
+
+</footer>
 
 </body>
 
