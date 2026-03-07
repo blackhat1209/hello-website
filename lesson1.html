@@ -30,6 +30,12 @@ color:white;
 border:none;
 border-radius:6px;
 cursor:pointer;
+margin-top:10px;
+}
+
+.answer{
+display:none;
+margin-top:10px;
 }
 
 </style>
@@ -38,61 +44,81 @@ cursor:pointer;
 
 <body>
 
-<h1>Lesson 1: Wave–Particle Duality</h1>
+<h1>Lesson 1: Wave-Particle Duality</h1>
 
 <div class="lesson">
 
-<p>
-
-Wave–particle duality states that light and matter
-can behave both as waves and as particles.
-
-</p>
+<h3>Theory</h3>
 
 <p>
 
-Example: In the double slit experiment,
-light creates interference patterns like waves.
+Wave-particle duality states that light and matter can behave both as waves and as particles.
+
+Example: In the double slit experiment, light forms interference patterns like waves.
+
+But in the photoelectric effect, light behaves like particles called photons.
 
 </p>
+
+<h3>Question</h3>
+
+<p>
+Why does the photoelectric effect prove that light behaves like particles?
+</p>
+
+<button onclick="toggleAnswer()">Show / Hide Answer</button>
+
+<p id="answer" class="answer">
+
+Because electrons are emitted only when light with sufficient frequency strikes the metal, showing that energy is delivered in discrete packets called photons.
+
+</p>
+
+<br>
 
 <button onclick="completeLesson()">Complete Lesson</button>
 
 </div>
 
 
-
-<!-- Supabase -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-const supabase = window.supabase.createClient(
+const supabaseClient = window.supabase.createClient(
 "https://rgiekcodgxjutfbdwqu.supabase.co",
-"PASTE_YOUR_FULL_PUBLISHABLE_KEY_HERE"
+"YOUR_PUBLISHABLE_KEY"
 );
+
+function toggleAnswer(){
+
+let ans = document.getElementById("answer");
+
+if(ans.style.display === "none"){
+ans.style.display = "block";
+}else{
+ans.style.display = "none";
+}
+
+}
 
 async function completeLesson(){
 
 let email = localStorage.getItem("userEmail");
 
 if(!email){
-
-alert("Please login first");
-
+alert("Please login on homepage first");
 return;
-
 }
 
-await supabase
+await supabaseClient
 .from("progress")
 .upsert({
 email: email,
 lesson1: true
 });
 
-alert("Lesson completed and saved!");
+alert("Lesson completed!");
 
 }
 
