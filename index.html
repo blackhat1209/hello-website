@@ -12,7 +12,7 @@
 
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI',sans-serif;
 background:#f5f7fa;
 }
 
@@ -67,7 +67,7 @@ font-size:18px;
 color:#555;
 }
 
-/* BUTTON */
+/* START BUTTON */
 
 .start-btn{
 background:#2563eb;
@@ -83,7 +83,7 @@ cursor:pointer;
 background:#1d4ed8;
 }
 
-/* LOGIN BUTTON */
+/* GOOGLE LOGIN */
 
 .login-btn{
 background:#ea4335;
@@ -93,6 +93,11 @@ border:none;
 border-radius:6px;
 cursor:pointer;
 margin-top:15px;
+font-size:16px;
+}
+
+.login-btn:hover{
+background:#d93025;
 }
 
 /* LESSON CARDS */
@@ -224,14 +229,14 @@ Simple lessons, visual explanations, and interactive quizzes.
 
 </footer>
 
-<!-- Firebase Scripts -->
 
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+<!-- FIREBASE -->
+
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
 
 <script>
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAcz5wsmlf6dQeBmZEZ8EGbULAQYTQ8rUo",
   authDomain: "quantumverse-32b5f.firebaseapp.com",
@@ -255,44 +260,6 @@ firebase.auth()
 document.getElementById("user").innerHTML =
 "Welcome " + result.user.displayName;
 
-});
-
-}
-
-</script>
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-
-const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT",
-  appId: "YOUR_APP_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth();
-
-const provider = new GoogleAuthProvider();
-
-window.login = function(){
-
-signInWithPopup(auth, provider)
-.then((result)=>{
-
-document.getElementById("user").innerHTML =
-"Welcome " + result.user.displayName;
-
 })
 .catch((error)=>{
 
@@ -307,5 +274,3 @@ console.log(error);
 </body>
 
 </html>
-
-
