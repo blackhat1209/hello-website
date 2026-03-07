@@ -261,7 +261,51 @@ document.getElementById("user").innerHTML =
 
 </script>
 
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+  apiKey: "YOUR_KEY",
+  authDomain: "YOUR_DOMAIN",
+  projectId: "YOUR_PROJECT",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+
+const provider = new GoogleAuthProvider();
+
+window.login = function(){
+
+signInWithPopup(auth, provider)
+.then((result)=>{
+
+document.getElementById("user").innerHTML =
+"Welcome " + result.user.displayName;
+
+})
+.catch((error)=>{
+
+console.log(error);
+
+});
+
+}
+
+</script>
+
 </body>
 
 </html>
+
 
