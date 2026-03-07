@@ -53,6 +53,24 @@ Lesson 2: Photoelectric Effect (Coming Soon)
 <div class="lesson">
 Lesson 3: De Broglie Wavelength (Coming Soon)
 </div>
+<h2>Your Progress</h2>
+
+<p id="progress">Progress: 0%</p>
+
+<button onclick="completeLesson()">Mark Lesson 1 Complete</button>
+
+<script>
+
+function completeLesson(){
+
+localStorage.setItem("lesson1","done");
+
+document.getElementById("progress").innerHTML =
+"Progress: 33%";
+
+}
+
+</script>
 
 </body>
 
