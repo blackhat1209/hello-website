@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>QuantumVerse</title>
 
 <style>
@@ -37,9 +35,13 @@ margin:0 20px;
 font-size:18px;
 }
 
+nav a:hover{
+color:#38bdf8;
+}
+
 .hero{
 text-align:center;
-padding:80px 20px;
+padding:70px 20px;
 }
 
 button{
@@ -107,7 +109,7 @@ color:white;
 
 <p id="user"></p>
 
-<p>Progress: <span id="progress">0%</span></p>
+<h3>Progress: <span id="progress">0%</span></h3>
 
 </section>
 
@@ -134,19 +136,19 @@ color:white;
 </section>
 
 <footer>
-
 <p>© QuantumVerse</p>
-
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-const supabase = window.supabase.createClient(
+const supabaseClient = window.supabase.createClient(
 "https://rgiekcodgxjutfbdwqu.supabase.co",
-"PASTE_YOUR_FULL_PUBLISHABLE_KEY"
+"YOUR_PUBLISHABLE_KEY"
 );
 
 function login(){
@@ -154,7 +156,7 @@ function login(){
 let email = document.getElementById("email").value;
 
 if(!email){
-alert("Enter email");
+alert("Please enter email");
 return;
 }
 
@@ -171,7 +173,9 @@ async function loadProgress(){
 
 let email = localStorage.getItem("userEmail");
 
-let { data } = await supabase
+if(!email) return;
+
+let { data } = await supabaseClient
 .from("progress")
 .select("*")
 .eq("email", email)
@@ -179,11 +183,13 @@ let { data } = await supabase
 
 if(data && data.lesson1){
 
-document.getElementById("progress").innerHTML="33%";
+document.getElementById("progress").innerHTML = "33%";
 
 }
 
 }
+
+loadProgress();
 
 </script>
 
