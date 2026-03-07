@@ -45,25 +45,40 @@ document.getElementById("answer").innerHTML =
 </script>
 <h2>Quick Question</h2>
 
+<div class="quiz">
+
 <p>
 What does wave–particle duality mean?
 </p>
 
-<button onclick="showAnswer()">Show Answer</button>
+<p id="answer" style="display:none;">
+Wave–particle duality means particles like electrons and photons
+can behave both as waves and as particles.
+</p>
 
-<p id="answer"></p>
+<button onclick="toggleAnswer()">Show Answer</button>
+
+</div>
 
 <script>
 
-function showAnswer(){
+function toggleAnswer(){
 
-document.getElementById("answer").innerHTML =
-"Wave–particle duality means that particles like electrons and photons can behave both as waves and as particles.";
+let ans = document.getElementById("answer");
+
+if(ans.style.display === "none"){
+
+ans.style.display = "block";
+
+}else{
+
+ans.style.display = "none";
+
+}
 
 }
 
 </script>
-
 </body>
 
 </html>
