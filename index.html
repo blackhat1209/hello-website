@@ -1,197 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuantumVerse</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Segoe UI;
-background:#f5f7fa;
-}
-
-header{
-background:#0f172a;
-color:white;
-text-align:center;
-padding:25px;
-}
-
-nav{
-display:flex;
-justify-content:center;
-background:#1e293b;
-padding:12px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 20px;
-font-size:18px;
-}
-
-nav a:hover{
-color:#38bdf8;
-}
-
-.hero{
-text-align:center;
-padding:70px 20px;
-}
-
-button{
-padding:12px 20px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-.lesson-container{
-display:flex;
-justify-content:center;
-gap:30px;
-padding:40px;
-flex-wrap:wrap;
-}
-
-.lesson-card{
-background:white;
-width:260px;
-padding:25px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
-text-align:center;
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#0f172a;
-color:white;
-}
-
-</style>
-
+<link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
 
 <header>
 <h1>QuantumVerse</h1>
-<p>Learn Quantum Physics Visually</p>
+<p>Explore the world of Quantum Physics</p>
 </header>
 
 <nav>
 <a href="index.html">Home</a>
-<a href="lesson1.html">Lessons</a>
-<a href="#">Experiments</a>
-<a href="#">About</a>
+<a href="lessons.html">Lessons</a>
+<a href="experiments.html">Experiments</a>
+<a href="about.html">About</a>
 </nav>
 
 <section class="hero">
-
-<h2>Start Learning Quantum Physics</h2>
-
-<p>Enter your email to track progress</p>
-
-<input id="email" placeholder="Enter email">
-
-<br><br>
-
-<button onclick="login()">Start Learning</button>
-
-<p id="user"></p>
-
-<h3>Progress: <span id="progress">0%</span></h3>
-
+<h2>Welcome to QuantumVerse</h2>
+<p>Learn quantum physics in a simple and visual way.</p>
 </section>
 
-<section>
-
-<h2 style="text-align:center;">Lessons</h2>
-
-<div class="lesson-container">
-
-<div class="lesson-card">
-
-<h3>Lesson 1</h3>
-
-<p>Wave-Particle Duality</p>
-
-<a href="lesson1.html">
-<button>Start Lesson</button>
-</a>
-
-</div>
-
-</div>
-
+<section class="progress">
+<h3>Your Progress</h3>
+<p id="progressText">0 lessons completed</p>
 </section>
 
 <footer>
-<p>© QuantumVerse</p>
+<p>Created by Tamilsetti Sashankreddy</p>
 </footer>
 
-
-<!-- SUPABASE -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const supabaseClient = window.supabase.createClient(
-"https://rgiekcodgxjutfbdwqu.supabase.co",
-"YOUR_PUBLISHABLE_KEY"
-);
-
-function login(){
-
-let email = document.getElementById("email").value;
-
-if(!email){
-alert("Please enter email");
-return;
-}
-
-localStorage.setItem("userEmail", email);
-
-document.getElementById("user").innerHTML =
-"Welcome " + email;
-
-loadProgress();
-
-}
-
-async function loadProgress(){
-
-let email = localStorage.getItem("userEmail");
-
-if(!email) return;
-
-let { data } = await supabaseClient
-.from("progress")
-.select("*")
-.eq("email", email)
-.single();
-
-if(data && data.lesson1){
-
-document.getElementById("progress").innerHTML = "33%";
-
-}
-
-}
-
-loadProgress();
-
-</script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
