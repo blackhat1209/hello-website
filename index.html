@@ -2,35 +2,24 @@
 <html>
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>QuantumVerse</title>
 
 <style>
 
 body{
 margin:0;
-font-family:'Segoe UI',sans-serif;
+font-family:Segoe UI;
 background:#f5f7fa;
 }
-
-/* HEADER */
 
 header{
 background:#0f172a;
 color:white;
-padding:25px;
 text-align:center;
+padding:25px;
 }
-
-header h1{
-margin:0;
-font-size:32px;
-}
-
-/* NAVBAR */
 
 nav{
 display:flex;
@@ -46,44 +35,19 @@ margin:0 20px;
 font-size:18px;
 }
 
-nav a:hover{
-color:#38bdf8;
-}
-
-/* HERO */
-
 .hero{
 text-align:center;
 padding:80px 20px;
 }
 
-.hero h2{
-font-size:40px;
-color:#0f172a;
-}
-
-.hero p{
-font-size:18px;
-color:#555;
-}
-
-/* START BUTTON */
-
 .start-btn{
 background:#2563eb;
 color:white;
 padding:14px 28px;
-font-size:18px;
 border:none;
 border-radius:6px;
 cursor:pointer;
 }
-
-.start-btn:hover{
-background:#1d4ed8;
-}
-
-/* GOOGLE LOGIN */
 
 .login-btn{
 background:#ea4335;
@@ -93,14 +57,7 @@ border:none;
 border-radius:6px;
 cursor:pointer;
 margin-top:15px;
-font-size:16px;
 }
-
-.login-btn:hover{
-background:#d93025;
-}
-
-/* LESSON CARDS */
 
 .lesson-container{
 display:flex;
@@ -129,14 +86,11 @@ display:inline-block;
 margin-top:10px;
 }
 
-/* FOOTER */
-
 footer{
 text-align:center;
 padding:20px;
 background:#0f172a;
 color:white;
-margin-top:40px;
 }
 
 </style>
@@ -146,36 +100,22 @@ margin-top:40px;
 <body>
 
 <header>
-
 <h1>QuantumVerse</h1>
 <p>Learn Quantum Physics Visually</p>
-
 </header>
 
 <nav>
-
 <a href="index.html">Home</a>
-<a href="lessons.html">Lessons</a>
-<a href="experiments.html">Experiments</a>
-<a href="about.html">About</a>
-
+<a href="lesson1.html">Lesson 1</a>
 </nav>
 
 <section class="hero">
 
 <h2>Master Quantum Physics</h2>
 
-<p>
-Simple lessons, visual explanations, and interactive quizzes.
-</p>
+<p>Simple lessons and interactive learning.</p>
 
 <br>
-
-<a href="lessons.html">
-<button class="start-btn">Start Learning</button>
-</a>
-
-<br><br>
 
 <button class="login-btn" onclick="login()">Sign in with Google</button>
 
@@ -185,38 +125,14 @@ Simple lessons, visual explanations, and interactive quizzes.
 
 <section>
 
-<h2 style="text-align:center;">Featured Lessons</h2>
+<h2 style="text-align:center;">Lessons</h2>
 
 <div class="lesson-container">
 
 <div class="lesson-card">
-
 <h3>Lesson 1</h3>
-
 <p>Wave–Particle Duality</p>
-
 <a href="lesson1.html">Start Lesson</a>
-
-</div>
-
-<div class="lesson-card">
-
-<h3>Lesson 2</h3>
-
-<p>Photoelectric Effect</p>
-
-<p>Coming Soon</p>
-
-</div>
-
-<div class="lesson-card">
-
-<h3>Lesson 3</h3>
-
-<p>De Broglie Wavelength</p>
-
-<p>Coming Soon</p>
-
 </div>
 
 </div>
@@ -224,13 +140,11 @@ Simple lessons, visual explanations, and interactive quizzes.
 </section>
 
 <footer>
-
-<p>© 2026 QuantumVerse</p>
-
+<p>© QuantumVerse</p>
 </footer>
 
 
-<!-- Firebase -->
+<!-- Firebase login -->
 
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
@@ -238,13 +152,9 @@ Simple lessons, visual explanations, and interactive quizzes.
 <script>
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAcz5wsmlf6dQeBmZEZ8EGbULAQYTQ8rUo",
-  authDomain: "quantumverse-32b5f.firebaseapp.com",
-  projectId: "quantumverse-32b5f",
-  storageBucket: "quantumverse-32b5f.firebasestorage.app",
-  messagingSenderId: "543593670049",
-  appId: "1:543593670049:web:aaf184807a6f0a15a657e0",
-  measurementId: "G-RXXG8ZH0Y5"
+apiKey: "AIzaSyAcz5wsmlf6dQeBmZEZ8EGbULAQYTQ8rUo",
+authDomain: "quantumverse-32b5f.firebaseapp.com",
+projectId: "quantumverse-32b5f",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -259,17 +169,10 @@ firebase.auth()
 
 const user = result.user;
 
-// show name
 document.getElementById("user").innerHTML =
 "Welcome " + user.displayName;
 
-// store UID for lesson progress
-localStorage.setItem("currentUserUID", user.uid);
-
-})
-.catch((error)=>{
-
-console.log(error);
+localStorage.setItem("userEmail", user.email);
 
 });
 
@@ -277,6 +180,19 @@ console.log(error);
 
 </script>
 
-</body>
 
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+
+const supabase = window.supabase.createClient(
+"https://rgiekcodgxjutfbdwqu.supabase.co",
+"PASTE_YOUR_FULL_PUBLISHABLE_KEY_HERE"
+);
+
+</script>
+
+</body>
 </html>
