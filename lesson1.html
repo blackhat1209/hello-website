@@ -71,6 +71,14 @@ ans.style.display = "none";
 
 }
 
+function completeLesson(){
+
+localStorage.setItem("lesson1","done");
+
+alert("Lesson 1 Completed!");
+
+}
+
 </script>
 
 </head>
@@ -98,35 +106,25 @@ ans.style.display = "none";
 <h1>Lesson 1: Wave–Particle Duality</h1>
 
 <p>
-Wave–particle duality is a fundamental concept of quantum mechanics.
-It states that light and matter can behave both as waves and as particles.
+Wave–particle duality states that light and matter
+can behave both as waves and as particles.
 </p>
 
 <h2>Example</h2>
 
 <p>
-Light behaves like a wave when it produces interference patterns
-in experiments like the double slit experiment.
-However, in the photoelectric effect it behaves like particles called photons.
+Light produces interference patterns like waves in
+the double slit experiment but behaves like particles
+in the photoelectric effect.
 </p>
 
-<h2>Key Formula</h2>
+<h2>Formula</h2>
 
-<p>
-De Broglie wavelength:
-</p>
-
-<h3>
-λ = h / p
-</h3>
-
-<p>
-Where:
-</p>
+<h3>λ = h / p</h3>
 
 <p>
 h = Planck's constant  
-p = momentum of the particle
+p = momentum
 </p>
 
 <div class="quiz">
@@ -138,8 +136,8 @@ What does wave–particle duality mean?
 </p>
 
 <p id="answer" style="display:none;">
-Wave–particle duality means that particles like electrons and photons
-can behave both as waves and as particles depending on the experiment.
+Wave–particle duality means particles such as electrons
+and photons can behave both as waves and as particles.
 </p>
 
 <button onclick="toggleAnswer()">Show / Hide Answer</button>
@@ -147,6 +145,10 @@ can behave both as waves and as particles depending on the experiment.
 </div>
 
 <br>
+
+<button onclick="completeLesson()">Complete Lesson</button>
+
+<br><br>
 
 <a href="lessons.html">← Back to Lessons</a>
 
