@@ -2,48 +2,66 @@
 <html>
 
 <head>
+
 <title>Lessons - QuantumVerse</title>
 
 <style>
+
 body{
 font-family: Arial;
 text-align:center;
 background:#f4f4f4;
+margin:0;
 }
 
-h1{
+header{
 background:#111;
 color:white;
 padding:20px;
+}
+
+nav{
+background:#333;
+padding:10px;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
 }
 
 .lesson{
 margin:20px;
 font-size:20px;
 }
+
 </style>
 
 </head>
 
 <body>
-<nav style="background:#333;padding:10px;text-align:center;">
 
-<a href="index.html" style="color:white;margin:15px;text-decoration:none;">Home</a>
+<header>
 
-<a href="lessons.html" style="color:white;margin:15px;text-decoration:none;">Lessons</a>
+<h1>QuantumVerse Lessons</h1>
 
-<a href="experiments.html" style="color:white;margin:15px;text-decoration:none;">Experiments</a>
+</header>
 
-<a href="about.html" style="color:white;margin:15px;text-decoration:none;">About</a>
+<nav>
+
+<a href="index.html">Home</a>
+<a href="lessons.html">Lessons</a>
+<a href="experiments.html">Experiments</a>
+<a href="about.html">About</a>
 
 </nav>
 
-<h1>Quantum Lessons</h1>
+<h2>Available Lessons</h2>
 
 <div class="lesson">
-<a href="lesson1.html">
-Lesson 1: Wave–Particle Duality
-</a>
+<a href="lesson1.html">Lesson 1: Wave–Particle Duality</a>
 </div>
 
 <div class="lesson">
@@ -53,20 +71,16 @@ Lesson 2: Photoelectric Effect (Coming Soon)
 <div class="lesson">
 Lesson 3: De Broglie Wavelength (Coming Soon)
 </div>
+
 <h2>Your Progress</h2>
 
 <p id="progress">Progress: 0%</p>
 
-<button onclick="completeLesson()">Mark Lesson 1 Complete</button>
-
 <script>
 
-function completeLesson(){
+if(localStorage.getItem("lesson1") === "done"){
 
-localStorage.setItem("lesson1","done");
-
-document.getElementById("progress").innerHTML =
-"Progress: 33%";
+document.getElementById("progress").innerHTML = "Progress: 33%";
 
 }
 
