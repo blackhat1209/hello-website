@@ -14,9 +14,11 @@ function completeLesson(){
 
 localStorage.setItem("lesson1","done");
 
-alert("Lesson Completed!");
+document.body.innerHTML += "<p style='position:fixed;bottom:20px;right:20px;background:#3b82f6;padding:10px;border-radius:6px;'>Lesson Completed ✔</p>";
 
-window.location.href = "lessons.html";
+setTimeout(function(){
+window.location.href="lessons.html";
+},1500);
 
 }
 
