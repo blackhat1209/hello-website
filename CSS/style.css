@@ -173,3 +173,9 @@ text-align:center;
 border-top:1px solid #1f2937;
 color:#9ca3af;
 }
+.lesson img{
+display:block;
+margin:20px auto;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
