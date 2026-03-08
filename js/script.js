@@ -16,7 +16,7 @@ localStorage.setItem("lesson1","done");
 
 alert("Lesson Completed!");
 
-updateProgress();
+window.location.href = "lessons.html";
 
 }
 
