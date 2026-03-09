@@ -39,3 +39,44 @@ progress.innerText = count + " lessons completed";
 }
 
 updateProgress();
+function startSimulation(){
+
+const canvas = document.getElementById("interferenceCanvas");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function createParticle(){
+
+particles.push({
+x:250,
+y:0,
+vx:(Math.random()-0.5)*1.5,
+vy:2
+});
+
+}
+
+function update(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x += p.vx;
+p.y += p.vy;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="#38bdf8";
+ctx.fill();
+
+});
+
+particles = particles.filter(p=>p.y < canvas.height);
+
+}
+
+setInterval(createParticle,100);
+setInterval(update,30);
+
+}
