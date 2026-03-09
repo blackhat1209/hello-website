@@ -289,3 +289,12 @@ background:#020617;
 border:1px solid #1f2937;
 border-radius:8px;
 }
+#bgCanvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:#020617;
+}
