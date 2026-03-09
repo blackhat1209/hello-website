@@ -264,3 +264,28 @@ transform:translate(-50%,-50%) rotate(0deg);
 transform:translate(-50%,-50%) rotate(360deg);
 }
 }
+/* DOUBLE SLIT SIMULATION */
+
+.slit-container{
+text-align:center;
+margin:40px auto;
+}
+
+.slits{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-bottom:10px;
+}
+
+.slit{
+width:6px;
+height:40px;
+background:white;
+}
+
+#interferenceCanvas{
+background:#020617;
+border:1px solid #1f2937;
+border-radius:8px;
+}
