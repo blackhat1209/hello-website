@@ -1,8 +1,10 @@
-function showAnswer(){
+// SHOW / HIDE ANSWER
+
+function showAnswer() {
 
 let ans = document.getElementById("answer");
 
-if(ans.style.display === "none"){
+if(ans.style.display === "none" || ans.style.display === ""){
 ans.style.display = "block";
 }else{
 ans.style.display = "none";
@@ -10,35 +12,22 @@ ans.style.display = "none";
 
 }
 
+
+// COMPLETE LESSON
+
 function completeLesson(){
 
 localStorage.setItem("lesson1","done");
 
-document.body.innerHTML += "<p style='position:fixed;bottom:20px;right:20px;background:#3b82f6;padding:10px;border-radius:6px;'>Lesson Completed ✔</p>";
+alert("Lesson Completed!");
 
-setTimeout(function(){
-window.location.href="lessons.html";
-},1500);
+window.location.href = "lessons.html";
 
 }
 
-function updateProgress(){
 
-let count = 0;
+// DOUBLE SLIT SIMULATION
 
-if(localStorage.getItem("lesson1") === "done"){
-count++;
-}
-
-let progress = document.getElementById("progressText");
-
-if(progress){
-progress.innerText = count + " lessons completed";
-}
-
-}
-
-updateProgress();
 function startSimulation(){
 
 const canvas = document.getElementById("interferenceCanvas");
@@ -50,7 +39,7 @@ function createParticle(){
 
 let xCenter = canvas.width / 2;
 
-/* create interference stripes using sine distribution */
+/* create interference stripes */
 let offset = Math.sin(Math.random()*10) * 80;
 
 particles.push({
@@ -81,31 +70,6 @@ particles = particles.filter(p=>p.y < canvas.height);
 }
 
 setInterval(createParticle,60);
-setInterval(update,30);
-
-}
-}
-
-function update(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-p.x += p.vx;
-p.y += p.vy;
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,2,0,Math.PI*2);
-ctx.fillStyle="#38bdf8";
-ctx.fill();
-
-});
-
-particles = particles.filter(p=>p.y < canvas.height);
-
-}
-
-setInterval(createParticle,100);
 setInterval(update,30);
 
 }
