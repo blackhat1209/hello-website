@@ -210,3 +210,57 @@ text-align:center;
 border-top:1px solid #1f2937;
 color:#9ca3af;
 }
+/* ATOM ANIMATION */
+
+.atom-animation{
+position:relative;
+width:200px;
+height:200px;
+margin:40px auto;
+}
+
+.nucleus{
+width:30px;
+height:30px;
+background:#60a5fa;
+border-radius:50%;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+box-shadow:0 0 20px #60a5fa;
+}
+
+.orbit{
+width:150px;
+height:150px;
+border:2px solid rgba(255,255,255,0.2);
+border-radius:50%;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+animation:spin 6s linear infinite;
+}
+
+.electron{
+width:12px;
+height:12px;
+background:#38bdf8;
+border-radius:50%;
+position:absolute;
+top:-6px;
+left:50%;
+transform:translateX(-50%);
+box-shadow:0 0 10px #38bdf8;
+}
+
+@keyframes spin{
+0%{
+transform:translate(-50%,-50%) rotate(0deg);
+}
+
+100%{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
