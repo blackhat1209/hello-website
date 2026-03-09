@@ -48,13 +48,42 @@ let particles = [];
 
 function createParticle(){
 
+let xCenter = canvas.width / 2;
+
+/* create interference stripes using sine distribution */
+let offset = Math.sin(Math.random()*10) * 80;
+
 particles.push({
-x:250,
-y:0,
-vx:(Math.random()-0.5)*1.5,
-vy:2
+x: xCenter + offset,
+y: 0,
+vy: 2
 });
 
+}
+
+function update(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+p.y += p.vy;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="#38bdf8";
+ctx.fill();
+
+});
+
+particles = particles.filter(p=>p.y < canvas.height);
+
+}
+
+setInterval(createParticle,60);
+setInterval(update,30);
+
+}
 }
 
 function update(){
