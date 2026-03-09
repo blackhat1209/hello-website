@@ -73,3 +73,38 @@ setInterval(createParticle,60);
 setInterval(update,30);
 
 }
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let t = 0;
+
+function drawWave(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let x=0;x<canvas.width;x+=8){
+
+let y1 = canvas.height/2 + Math.sin((x+t)*0.02)*40;
+let y2 = canvas.height/2 + Math.sin((x+t)*0.02 + Math.PI)*40;
+
+ctx.fillStyle="rgba(56,189,248,0.5)";
+ctx.beginPath();
+ctx.arc(x,y1,2,0,Math.PI*2);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(x,y2,2,0,Math.PI*2);
+ctx.fill();
+
+}
+
+t+=2;
+
+requestAnimationFrame(drawWave);
+
+}
+
+drawWave();
